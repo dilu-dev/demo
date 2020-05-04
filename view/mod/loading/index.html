@@ -1,0 +1,426 @@
+{d:header}loading用法演示{/d:header}
+
+<style>
+    body {
+        padding: 25px;
+    }
+
+    .layui-btn {
+        margin-top: 10px;
+    }
+
+    .elem {
+        background: #fff;
+        color: #000;
+        border: solid 1px black;
+        padding: 0;
+        margin: 0;
+    }
+
+    #elems {
+        width: 800px;
+        margin-top: 60px;
+    }
+
+    #normalElemPBlock,
+    #normalElemDivBlock {
+        display: block;
+    }
+
+    #btnElemBlock {
+        display: block;
+    }
+
+    #normalElemPBlockWithPadding {
+        padding: 20px 10px 10px 25px;
+        display: block;
+    }
+
+    #normalElemSpanInline,
+    #normalElemSpanInlineWithPadding,
+    #normalElemSpanInlineWithPaddingMargin,
+    #btnElemInline {
+        display: inline;
+    }
+
+    #normalElemSpanInlineWithPadding {
+        padding: 20px 10px 15px 25px;
+    }
+
+    #normalElemSpanInlineWithPaddingMargin {
+        padding: 20px 10px 15px 25px;
+        margin: 20px 10px 15px 25px;
+    }
+
+    #normalElemPBlockWithPaddingMargin {
+        padding: 20px 10px 15px 25px;
+        margin: 20px 10px 15px 25px;
+    }
+
+    #fixedElem {
+        width: 200px;
+        position: fixed;
+        right: 10px;
+        top: 250px;
+    }
+
+    #fixedElemWithPadding {
+        width: 200px;
+        position: fixed;
+        right: 10px;
+        bottom: 50px;
+        padding: 20px 10px 15px 25px;
+    }
+
+    #left1,
+    #left2,
+    #left3 {
+        float: left;
+    }
+
+    #left2 {
+        margin: 20px 10px 15px 25px;
+    }
+
+    #left3 {
+        padding: 20px 10px 15px 25px;
+    }
+
+    #divBeforeAbsolute {
+        width: 200px;
+        height: 200px;
+        background: #0b8cff;
+    }
+
+    #divAbsolute {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background: red;
+        margin-top: -100px;
+        margin-left: 100px;
+    }
+
+    #divAbsoluteWithPadding {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background: mediumseagreen;
+        top: 1000px;
+        left: 300px;
+        padding: 20px 10px 15px 25px;
+    }
+
+    #divBeforeRelative {
+        width: 200px;
+        height: 200px;
+        background: #0b8cff;
+    }
+
+    #divRelative {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        background: red;
+        margin-top: -100px;
+        margin-left: 100px;
+    }
+
+    #divRelativeWithPadding {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        background: mediumseagreen;
+        top: 10px;
+        left: 300px;
+        padding: 20px 10px 15px 25px;
+    }
+
+    #iframe {
+        width: 80%;
+        border: solid 1px #ccc;
+        min-height: 500px;
+    }
+</style>
+<div class="btns" style="position: fixed;background: #fff;z-index: 999999;">
+    <button class="layui-btn" id="global">全局Loading（3秒后消失）</button>
+    <button class="layui-btn" id="globalText">全局Loading带文字（3秒后消失）</button>
+    <button class="layui-btn" id="elemNormalBlock">普通block元素Loading</button>
+    <button class="layui-btn" id="elemNormalInline">普通Inline元素Loading</button>
+    <button class="layui-btn" id="elemFloat">Float元素Loading</button>
+    <button class="layui-btn" id="elemFixed">Fixed元素Loading</button>
+    <button class="layui-btn" id="elemFixedText">Fixed元素Loading带文字</button>
+    <button class="layui-btn" id="elemAbsolute">Absolute元素Loading</button>
+    <button class="layui-btn" id="elemRelative">Relative元素Loading</button>
+    <button class="layui-btn" id="elemIframe">iframe元素Loading</button>
+    <button class="layui-btn" id="elemAll">All Loading</button>
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<pre class="layui-code">
+(1)全局加载动画
+      g.loading();//显示全局加载动画
+      g.loading().text("加载中...");//显示全局加载动画和文字
+      g.loading().text("加载中...", "red");//显示全局加载动画和文字，并设定文字颜色
+      g.loading().text("加载中...", {"color":"red", "font-size":"20px"});//显示全局加载动画和文字，并设定文字的更多样式
+      g.loading(false);//取消全局加载动画
+      g.loading().text("加载中...").hide(3);//显示全局加载动画和文字，并且3秒后自动消失
+
+(2)单个元素的加载动画
+      g.loading($elem);//在指定的元素上显示加载动画
+      g.loading($elem).text("加载中...");//显示全局加载动画和文字
+      g.loading($elem).text("加载中...", "red");//显示全局加载动画和文字，并设定文字颜色
+      g.loading($elem).text("加载中...", {"color":"red", "font-size":"20px"});//显示全局加载动画和文字，并设定文字的更多样式
+      g.loading($elem, false);//隐藏在指定的元素上的加载动画
+</pre>
+
+
+<div class="elems" id="elems">
+    <p class="elem" id="normalElemPBlock">
+        我是普通Block元素p
+    </p>
+    <br/>
+    <p class="elem" id="normalElemPBlockWithPadding">
+        我是带padding的普通Block元素p
+    </p>
+    <br/>
+    <div class="layui-clear">
+        <div class="layui-row">
+            <div class="layui-col-xs3">
+                <div class="elem" id="normalElemDivBlock">
+                    我是普通Block元素div
+                </div>
+            </div>
+            <div class="layui-col-xs6">
+                <div class="elem" id="normalElemPBlockWithPaddingMargin">
+                    我是带padding和margin的普通Block元素p
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="layui-btn elem-btn" id="btnElemBlock">我是Block按钮</button>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <span class="elem" id="normalElemSpanInline">
+        我是inline元素
+    </span>
+    <span class="elem" id="normalElemSpanInlineWithPadding">
+        我是inline元素，带padding
+    </span>
+    <span class="elem" id="normalElemSpanInlineWithPaddingMargin">
+        我是inline元素，带padding margin
+    </span>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+    <button class="layui-btn elem-btn" id="btnElemInline">我是Inline按钮</button>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+    <div class="layui-clear">
+        <div id="left1" class="elem">left1</div>
+        <div id="left2" class="elem">left2</div>
+        <div id="left3" class="elem">left3</div>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+    <div class="layui-clear">
+        <div class="elem" id="divBeforeAbsolute">
+        </div>
+        <div class="elem" id="divAbsolute">
+        </div>
+        <div class="elem" id="divAbsoluteWithPadding">
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+
+    <div class="layui-clear">
+        <div class="elem" id="divBeforeRelative">
+        </div>
+        <div class="elem" id="divRelative">
+        </div>
+        <div class="elem" id="divRelativeWithPadding">
+        </div>
+    </div>
+
+    <br/>
+    <p class="elem" id="fixedElem">
+        我是位置固定Fixed的元素。3月12日下午，中共中央总书记、国家主席、中央军委主席习近平出席十三届全国人大二次会议解放军和武警部队代表团全体会议。截至目前，今年两会期间，习近平已六下团组，一图了解习近平2019两会“金句”。
+    </p>
+    <div class="elem" id="fixedElemWithPadding">
+        我是位置固定Fixed的元素带padding。3月12日下午，中共中央总书记、国家主席、中央军委主席习近平出席十三届全国人大二次会议解放军和武警部队代表团全体会议。截至目前，今年两会期间，习近平已六下团组，一图了解习近平2019两会“金句”。
+    </div>
+
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <iframe class="elem" src="/core/" id="iframe"></iframe>
+
+</div>
+
+<script>
+    $("#global").click(function () {
+        g.loading().hide(3);
+    });
+    $("#globalText").click(function () {
+        g.loading().text("加载中，3秒钟消失").hide(3);
+    });
+    $("#elemNormalBlock").click(function () {
+        toggleLoading($("#normalElemPBlock"));
+        toggleLoading($("#normalElemDivBlock"));
+        toggleLoading($("#btnElemBlock"));
+        toggleLoading($("#normalElemPBlockWithPadding"));
+        toggleLoading($("#normalElemPBlockWithPaddingMargin"));
+    });
+
+    $("#elemNormalInline").click(function () {
+        toggleLoading($("#normalElemSpanInline"));
+        toggleLoading($("#normalElemSpanInlineWithPadding"));
+        toggleLoading($("#normalElemSpanInlineWithPaddingMargin"));
+        toggleLoading($("#btnElemInline"));
+    });
+    $("#elemFloat").click(function () {
+        toggleLoading($("#left1"));
+        toggleLoading($("#left2"));
+        toggleLoading($("#left3"));
+    });
+
+    $("#elemFixed").click(function () {
+        toggleLoading($("#fixedElem"));
+        toggleLoading($("#fixedElemWithPadding"));
+    });
+
+    $("#elemFixedText").click(function () {
+        toggleLoading($("#fixedElem")).text("加载中...", "red");
+        toggleLoading($("#fixedElemWithPadding")).text("加载中...", {
+            "color": "blue",
+            "font-size": "16px",
+            "background": "#fff",
+            "margin": "0 5px"
+        });
+    });
+
+    $("#elemAbsolute").click(function () {
+        toggleLoading($("#divAbsolute"));
+        toggleLoading($("#divAbsoluteWithPadding"));
+    });
+
+    $("#elemRelative").click(function () {
+        toggleLoading($("#divRelative"));
+        toggleLoading($("#divRelativeWithPadding"));
+    });
+
+    $("#elemIframe").click(function () {
+        toggleLoading($("#iframe"));
+    });
+
+    $("#elemAll").click(function () {
+        $(".elem").each(function () {
+            toggleLoading($(this));
+        });
+        $(".elem-btn").each(function () {
+            toggleLoading($(this));
+        });
+    });
+
+    function toggleLoading($elem) {
+        var isLoading = $elem.data("loading");
+        if (!isLoading) {
+            $elem.data("loading", true);
+            return g.loading($elem);
+        } else {
+            $elem.data("loading", false);
+            return g.loading($elem, false);
+        }
+    }
+
+    function testAllElementLoading(interval) {
+        if (!interval) {
+            interval = 3000;
+        }
+        var elems = [];
+        $("*").each(function () {
+            if (["script", "style", "link", "meta", "head", "title", "br", "pre"].indexOf(this.tagName.toLowerCase()) !== -1) {
+                return;
+            }
+            elems.push(this);
+        });
+
+        var i = 0;
+        var test = function () {
+            if (i >= elems.length) {
+                console.log("finish");
+                return;
+            }
+            g.loading($(elems[i]));
+            console.log([
+                elems[i],
+                {
+                    top: $(elems[i]).offset().top,
+                    left: $(elems[i]).offset().left,
+                    outerHeight: $(elems[i]).outerHeight(),
+                    outerWidth: $(elems[i]).outerWidth(),
+                    position: $(elems[i]).css('position'),
+                    display: $(elems[i]).css('display')
+                }
+            ]);
+            setTimeout(function () {
+                g.loading($(elems[i]), false);
+                i++;
+                test();
+            }, interval);
+        };
+        test();
+    }
+</script>
+
+{d:footer/}
