@@ -1,0 +1,143 @@
+{header}layDate示例{/header}
+
+<style>
+    body {
+        padding: 20px;
+    }
+</style>
+
+<div id="main">
+    <h2>快捷用法</h2>
+    <input type="text" class="layui-input" autocomplete="off" id="year" placeholder="选择年份"/>
+    <input type="text" class="layui-input" autocomplete="off" id="month" placeholder="选择年月"/>
+    <input type="text" class="layui-input" autocomplete="off" id="date" placeholder="选择日期"/>
+    <input type="text" class="layui-input" autocomplete="off" id="quarter" placeholder="选择季度"/>
+    <input type="text" class="layui-input" autocomplete="off" id="week" placeholder="选择周"/>
+    <input type="text" class="layui-input" autocomplete="off" id="datehour" placeholder="选择年月日 + 小时"/>
+    <input type="text" class="layui-input" autocomplete="off" id="dateminute" placeholder="选择年月日 + 时分"/>
+    <input type="text" class="layui-input" autocomplete="off" id="datetime" placeholder="选择年月日 + 时分秒"/>
+    <input type="text" class="layui-input" autocomplete="off" id="hour" placeholder="选择小时"/>
+    <input type="text" class="layui-input" autocomplete="off" id="minute" placeholder="选择时分"/>
+    <input type="text" class="layui-input" autocomplete="off" id="time" placeholder="选择时分秒"/>
+
+    <h2>选择区间</h2>
+    <input type="text" class="layui-input" autocomplete="off" id="year2" placeholder="选择年份"/>
+    <input type="text" class="layui-input" autocomplete="off" id="month2" placeholder="选择年月"/>
+    <input type="text" class="layui-input" autocomplete="off" id="date2" placeholder="选择日期"/>
+    <input type="text" class="layui-input" autocomplete="off" id="quarter2" placeholder="选择季度"/>
+    <input type="text" class="layui-input" autocomplete="off" id="week2" placeholder="选择周"/>
+    <input type="text" class="layui-input" autocomplete="off" id="datehour2" placeholder="选择年月日 + 小时"/>
+    <input type="text" class="layui-input" autocomplete="off" id="dateminute2" placeholder="选择年月日 + 时分"/>
+    <input type="text" class="layui-input" autocomplete="off" id="datetime2" placeholder="选择年月日 + 时分秒"/>
+    <input type="text" class="layui-input" autocomplete="off" id="hour2" placeholder="选择小时"/>
+    <input type="text" class="layui-input" autocomplete="off" id="minute2" placeholder="选择时分"/>
+    <input type="text" class="layui-input" autocomplete="off" id="time2" placeholder="选择时分秒"/>
+</div>
+
+<script>
+    layui.use('laydate', function () {
+        layui.laydate.render({
+            elem: '#year',
+            type: 'year'
+        });
+        layui.laydate.render({
+            elem: '#month',
+            type: 'month'
+        });
+        layui.laydate.render({
+            elem: '#date',
+            type: 'date'
+        });
+        layui.laydate.render({
+            elem: '#quarter',
+            type: 'quarter'
+        });
+        layui.laydate.render({
+            elem: '#week',
+            type: 'week'
+        });
+        layui.laydate.render({
+            elem: '#datehour',
+            type: 'datehour'
+        });
+        layui.laydate.render({
+            elem: '#dateminute',
+            type: 'dateminute'
+        });
+        layui.laydate.render({
+            elem: '#datetime',
+            type: 'datetime'
+        });
+        layui.laydate.render({
+            elem: '#hour',
+            type: 'hour'
+        });
+        layui.laydate.render({
+            elem: '#minute',
+            type: 'minute'
+        });
+        layui.laydate.render({
+            elem: '#time',
+            type: 'time'
+        });
+
+        layui.laydate.render({
+            elem: '#year2',
+            type: 'year',
+            range: true
+        });
+        layui.laydate.render({
+            elem: '#month2',
+            type: 'month',
+            range: true
+        });
+        layui.laydate.render({
+            elem: '#date2',
+            type: 'date',
+            range: true
+        });
+        layui.laydate.render({
+            elem: '#quarter2',
+            type: 'quarter',
+            range: true
+        });
+        layui.laydate.render({
+            elem: '#week2',
+            type: 'week',
+            range: true
+        });
+        layui.laydate.render({
+            elem: '#datehour2',
+            type: 'datehour',
+            range: true
+        });
+        layui.laydate.render({
+            elem: '#dateminute2',
+            type: 'dateminute',
+            range: true
+        });
+        layui.laydate.render({
+            elem: '#datetime2',
+            type: 'datetime',
+            range: true
+        });
+        layui.laydate.render({
+            elem: '#hour2',
+            type: 'hour',
+            range: true
+        });
+        layui.laydate.render({
+            elem: '#minute2',
+            type: 'minute',
+            range: true
+        });
+        layui.laydate.render({
+            elem: '#time2',
+            type: 'time',
+            range: true
+        });
+
+    });
+</script>
+
+{footer/}
