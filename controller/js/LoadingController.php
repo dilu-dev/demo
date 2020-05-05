@@ -9,7 +9,7 @@
 // | Date : 2020/5/4
 // +-------------------------------------------------------------------------------
 
-namespace app\demo\controller\mod;
+namespace app\demo\controller\js;
 
 
 use app\core\controller\common\BaseController;

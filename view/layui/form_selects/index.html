@@ -1,0 +1,73 @@
+{header}FormSelects示例{/header}
+
+<style>
+    body {
+        padding: 20px;
+    }
+</style>
+
+<div id="main">
+    <select name="city" xm-select="select1" xm-select-search>
+        <option value="1" disabled="disabled">北京</option>
+        <option value="2" selected="selected">上海</option>
+        <option value="3">广州</option>
+        <option value="4" selected="selected">深圳</option>
+        <option value="5">天津</option>
+    </select>
+    <br/>
+    <br/>
+    <br/>
+    <select name="city" xm-select="select11" xm-select-max="2" xm-select-radio="true">
+        <option value="1" disabled="disabled">北京</option>
+        <option value="2" selected="selected">上海</option>
+        <option value="3">广州</option>
+        <option value="4" selected="selected">深圳</option>
+        <option value="5">天津</option>
+    </select>
+    <br/>
+    <br/>
+    <br/>
+    <select name="city" xm-select="select12" xm-select-search="load">
+    </select>
+
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th>姓名</th>
+            <th>城市</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>张三</td>
+            <td>
+                <select name="city" xm-select="select3">
+                    <option value="1" disabled="disabled">北京</option>
+                    <option value="2" selected="selected">上海</option>
+                    <option value="3">广州</option>
+                    <option value="4" selected="selected">深圳</option>
+                    <option value="5">天津</option>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div style="position: fixed; width: 300px; bottom: 0;">
+        <select name="city" xm-select="select2" xm-select-show-count="2">
+            <option value="1" disabled="disabled">北京</option>
+            <option value="2" selected="selected">上海</option>
+            <option value="3">广州</option>
+            <option value="4" selected="selected">深圳</option>
+            <option value="5">天津</option>
+        </select>
+    </div>
+</div>
+
+<script>
+    layui.use('formSelects', function () {
+        layui.formSelects.render();
+    });
+</script>
+
+{footer/}

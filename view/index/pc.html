@@ -1,0 +1,12 @@
+{header}页面标题{/header}
+
+<pre class="layui-code" id="env" lay-title="g.ENV"></pre>
+
+<script>
+    $(document).ready(function () {
+        $("#env").html("g.ENV = " + JSON.stringify(g.ENV, null, 4));
+        layui.code();
+    });
+</script>
+
+{footer/}
