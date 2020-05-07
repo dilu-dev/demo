@@ -1,0 +1,84 @@
+{header shareTitle="g.component用法演示" shareDesc="abcd"}g.component用法演示{/header}
+
+<style>
+    body {
+        padding: 25px;
+    }
+</style>
+
+<div id="main"></div>
+
+<div id="console" style="background: #000;color: #fff;position: fixed;width: 200px;right: 0;top: 0;"></div>
+
+<script>
+    var MyComponent = function ($elem, opts) {
+        var that = this;
+        that.$elem = $elem;
+
+        that.registerOperationReady("css1");
+        that.registerOperationReady("css2");
+        g.injectCss("/demo/static/css/a.css", function () {
+            $("#console").append("css1 ready<br/>");
+            that.operationReady("css1");
+        });
+        g.injectCss("/demo/static/css/b.css", function () {
+            $("#console").append("css2 ready<br/>");
+            that.operationReady("css2");
+        });
+    };
+    MyComponent.prototype.say = function (str) {
+        this.$elem.append("<div class='line'>" + new Date().format("yyyy-MM-dd HH:mm:ss") + " " + str + "</div>");
+        this.fire("say", str);
+    };
+
+    layui.use("gComponent", function () {
+        g.component.addEventSupport(MyComponent);
+        g.component.addReadySupport(MyComponent);
+        g.component.addDataSupport(MyComponent);
+
+        window.comp = new MyComponent($("#main"), {});
+        comp.ready(function () {
+            $("#console").append("ready<br/>");
+        });
+        var funcId = comp.on("say", function (str) {
+            $("#console").append("on say : " + str + "<br/>");
+        });
+        comp.once("say", function (str) {
+            $("#console").append("once say : " + str + "<br/>");
+        });
+
+        comp.say("hello");
+        comp.say("world");
+        comp.off("say", funcId);
+        comp.say("off");
+
+        //////////////////////////////////////////////////////////////////////////////
+        comp.on("data-add", function (dataInfo) {
+            $("#console").append("data-add: <pre>" + JSON.stringify(dataInfo, null, 4) + "</pre><br/>");
+        });
+        comp.on("data-change", function (dataInfo) {
+            $("#console").append("data-change: <pre>" + JSON.stringify(dataInfo, null, 4) + "</pre><br/>");
+        });
+        comp.on("data-change-fail", function (eventData) {
+            $("#console").append("data-change-fail: <pre>" + JSON.stringify(eventData, null, 4) + "</pre><br/>");
+        });
+        comp.addData({
+            name: 'id',
+            title: '编号',
+            value: 128,
+            beforechange: function (currentValue, changeToValue) {
+                $("#console").append("beforechange: " + currentValue + " => " + changeToValue + "<br/>");
+                if(changeToValue < 0) {
+                    return false;
+                }
+            },
+            onchange: function (oldValue, currentValue) {
+                $("#console").append("onchange: " + oldValue + " => " + currentValue + "<br/>");
+            }
+        });
+        comp.data.id = 100;
+        comp.data.id = -1;
+    });
+</script>
+
+{footer/}
