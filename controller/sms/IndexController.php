@@ -24,4 +24,12 @@ class IndexController extends BaseController {
         $metas = SmsExtension::getAllExtensionImplMetas();
         dump($metas);
     }
+
+    public function send() {
+        $phoneNumber = "18896580792";
+        $code = "1234";
+        $expireMinutes = 10;
+        $ret = SmsExtension::instance()->sendCodeMsg($phoneNumber, $code, $expireMinutes);
+        dump($ret);
+    }
 }
