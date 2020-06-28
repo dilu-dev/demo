@@ -14,6 +14,8 @@ namespace app\demo\controller\sms;
 
 use app\core\controller\common\BaseController;
 use app\core\extension\sms\SmsExtension;
+use app\core\logic\VerifyCodeLogic;
+use app\core\model\VerifyCode;
 
 class IndexController extends BaseController {
 
@@ -31,5 +33,14 @@ class IndexController extends BaseController {
         $expireMinutes = 10;
         $ret = SmsExtension::instance()->sendCodeMsg($phoneNumber, $code, $expireMinutes);
         dump($ret);
+    }
+
+    public function code() {
+        $phoneNumber = "18896580792";
+        $code = VerifyCodeLogic::send($phoneNumber);
+        dump($code);
+        $ret = VerifyCodeLogic::verify($phoneNumber, $code);
+        dump($ret);
+        exit;
     }
 }
