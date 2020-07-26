@@ -9,6 +9,10 @@ class IndexController extends BaseController {
     protected function checkLogin() {
     }
 
+    public function index() {
+        dump($this->env);
+    }
+
     public function pc() {
         return view();
     }
